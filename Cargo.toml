@@ -15,3 +15,5 @@ path = "src/main.rs"
 [dependencies]
 rand  = "~0.7.3"
 readonly = "0.1.5"
+uuid = { version = "0.8.1", features = ["v4"] }
+error-chain = "0.12.2"
