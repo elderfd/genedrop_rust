@@ -90,7 +90,7 @@ pub fn recombine<'a>(
         return Result::Err("Chromosomes with different maps cannot be recombined.");
     }
 
-    // NB: It doesn't matter whether we father or mother chromosome as must be the same
+    // NB: It doesn't matter whether we use father or mother chromosome as must be the same
     let mut child_chromosome: Chromosome = Chromosome::new(father_chromosome.map);
 
     // Choose initial chromosome to choose from at random
@@ -120,6 +120,7 @@ pub fn recombine<'a>(
 mod tests {
     use super::*;
 
+    #[allow(unused_must_use)]
     #[test]
     #[should_panic]
     /// Tests that attempting to recombine chromosomes of unequal size gives an error
