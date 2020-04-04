@@ -1,0 +1,16 @@
+[package]
+name = "genedrop_core"
+version = "0.1.0"
+authors = ["James Elderfield <jad.elderfield@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "genedrop_core"
+path = "src/lib.rs"
+
+[[bin]]
+name = "genedrop"
+path = "src/main.rs"
+
+[dependencies]
+rand  = "~0.7.3"
