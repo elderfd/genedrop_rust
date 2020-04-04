@@ -14,3 +14,4 @@ path = "src/main.rs"
 
 [dependencies]
 rand  = "~0.7.3"
+readonly = "0.1.5"
