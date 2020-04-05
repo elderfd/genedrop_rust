@@ -22,7 +22,7 @@ impl<'a> Chromosome<'a> {
     pub fn new(map: &'a ChromosomeMap) -> Self {
         Chromosome {
             loci: vec![Default::default(); map.len() + 1],
-            map: map,
+            map,
         }
     }
 
@@ -44,6 +44,10 @@ impl<'a> Chromosome<'a> {
     /// Returns the number of loci
     pub fn len(&self) -> usize {
         self.map.len() + 1
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.map.is_empty()
     }
 }
 
@@ -115,7 +119,7 @@ pub fn recombine<'a>(
         }
     }
 
-    return Ok(child_chromosome);
+    Ok(child_chromosome)
 }
 
 #[cfg(test)]

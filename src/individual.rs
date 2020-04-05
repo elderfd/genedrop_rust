@@ -10,6 +10,7 @@ static new_uuid: fn() -> Uuid = Uuid::new_v4;
 
 type Homology<'a> = Vec<Chromosome<'a>>;
 
+#[derive(Default)]
 pub struct Individual<'a> {
     pub id: String,
     pub homologies: Vec<Homology<'a>>,
@@ -24,20 +25,20 @@ impl<'a> Individual<'a> {
     }
 
     pub fn ploidy(&self) -> Result<usize> {
-        if self.homologies.len() == 0 || self.homologies[0].len() == 0 {
+        if self.homologies.is_empty() || self.homologies[0].is_empty() {
             bail!("Cannot determine ploidy, no genotype data.");
         }
 
-        return Ok(self.homologies[0].len());
+        Ok(self.homologies[0].len())
     }
 
     pub fn chromosome_number(&self) -> Result<usize> {
-        if self.homologies.len() == 0 {
+        if self.homologies.is_empty() {
             bail!("Cannot determine number of chromosomes, no genotype data.");
         }
 
         // TODO: This info is also in the map - maybe better to retrieve from there?
-        return Ok(self.homologies.len());
+        Ok(self.homologies.len())
     }
 
     pub fn get_gamete(&self, homology_index: usize) -> Result<Chromosome> {
@@ -105,7 +106,7 @@ pub fn breed<'a>(father: &'a Individual, mother: &'a Individual) -> Result<Indiv
         child.homologies.push(new_homology);
     }
 
-    return Ok(child);
+    Ok(child)
 }
 
 #[cfg(test)]
